@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block start %}
+<h1>Yes, This is receipe page.</h1>
+<form class="container">
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Receipe Name</label>
+      <input type="text" class="form-control" >
+      
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword1" class="form-label">Receipe Description</label>
+      <textarea class="form-control" ></textarea>
+    </div>
+    <div class="mb-3">
+        <label class="form-check-label" for="exampleCheck1">Receipe Image</label>
+      <input type="file" class="file" id="exampleCheck1">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+{% endblock %} 
