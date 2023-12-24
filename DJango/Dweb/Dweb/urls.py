@@ -18,12 +18,21 @@ from django.contrib import admin
 from django.urls import path
 from home.views import *
 from veggie.views import *
+from django.conf.urls.static import static
+from django.conf import settings
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
     path('', home, name="home"), # if anyone go to blank path(i.g: port:8000) then home will be execute.
     path('about/', about,name="about"),# 
     path('contact/', contact,name="contact"),# 
-    path('receipes/', receipes,name="receipes"),# 
+    path('recipes/', recipes,name="recipes"),# 
 
     path('admin/', admin.site.urls),
 ]
+
+
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL,document_root = settings.MEDIA_ROOT)
+
+urlpatterns += staticfiles_urlpatterns()

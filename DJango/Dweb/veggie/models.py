@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class Receipes(models.Model):
-    receipe_name = models.CharField(max_length = 100)
-    receipe_description = models.TextField()
-    receipe_image = models.ImageField(upload_to = "receipe")
+class Recipes(models.Model):
+    recipe_name = models.CharField(max_length = 100)
+    recipe_description = models.TextField()
+    recipe_image = models.ImageField(upload_to = "recipes")
