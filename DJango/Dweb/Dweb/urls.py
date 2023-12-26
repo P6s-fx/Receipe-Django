@@ -27,6 +27,8 @@ urlpatterns = [
     path('about/', about,name="about"),# 
     path('contact/', contact,name="contact"),# 
     path('recipes/', recipes,name="recipes"),# 
+    path('delete-recipe/<id>/', delete_recipe,name="delete-recipe"),
+    
 
     path('admin/', admin.site.urls),
 ]

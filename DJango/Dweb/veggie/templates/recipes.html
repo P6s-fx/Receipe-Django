@@ -28,7 +28,7 @@
 <br>
 <br>
 <br>
-  {{recipes}}
+  <!-- {{recipes}} -->
 
   <table class="table">
     <thead>
@@ -37,16 +37,20 @@
         <th scope="col">Recipe Name </th>
         <th scope="col">Description</th>
         <th scope="col">Image</th>
+        <th scope="col">Actions</th>
       </tr>
     </thead>
     <tbody>
       {% for recipe in recipes %}
       <tr>
         <th scope="row">{{forloop.counter}}</th>
-        <td>{{recipes.recipe_name}}</td>
-        <td>{{recipes.recipe_description}}</td>
+        <td>{{recipe.recipe_name}}</td>
+        <td>{{recipe.recipe_description}}</td>
         <td>
           <img src="/media/{{recipes.recipe_image}}" style="height : 100px;"></td>
+          <td>
+            <a href="/delete-recipe/{{recipe.id}}/" class="btn btn-danger"> Delete </a>
+          </td>
       {% endfor %}
     </tbody>
   </table>
