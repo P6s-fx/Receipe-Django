@@ -9,7 +9,7 @@
     <hr>
     
     <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label">Recipe Name</label>
+      <label for="exampleInputEmail1" class="form-label" >Recipe Name</label>
       <input name="recipe_name" required type="text" class="form-control" >
     </div>
     
@@ -28,9 +28,22 @@
 <br>
 <br>
 <br>
+
+<hr>
   <!-- {{recipes}} -->
 
-  <table class="table">
+<form action="" class="">
+  
+  <div class="mt-5">
+    <div class="mx-auto col-6">
+      <label for="exampleInputEmail1" class="form-label" >Search Recipe</label>
+      <input name="search" required type="text" class="form-control" >
+      <button type="submit" class="btn btn-primary m-3 ">search</button>
+    </div>
+  </div>
+</form>
+
+  <table class="table mt-5">
     <thead>
       <tr>
         <th scope="col">#</th>
@@ -47,9 +60,10 @@
         <td>{{recipe.recipe_name}}</td>
         <td>{{recipe.recipe_description}}</td>
         <td>
-          <img src="/media/{{recipes.recipe_image}}" style="height : 100px;"></td>
+          <img src="/media/{{recipe.recipe_image}}" style="height : 100px;"></td>
           <td>
-            <a href="/delete-recipe/{{recipe.id}}/" class="btn btn-danger"> Delete </a>
+            <a href="/delete-recipe/{{recipe.id}}/" class="btn btn-danger mb-3"> Delete </a>
+            <a href="/update-recipe/{{recipe.id}}/" class="btn btn-success"> update </a>
           </td>
       {% endfor %}
     </tbody>
