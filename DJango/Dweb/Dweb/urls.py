@@ -23,11 +23,17 @@ from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 urlpatterns = [
-    path('', home, name="home"), # if anyone go to blank path(i.g: port:8000) then home will be execute.
-    path('about/', about,name="about"),# 
-    path('contact/', contact,name="contact"),# 
-    path('recipes/', recipes,name="recipes"),# 
+    path('', home, name="home"),
+    path('about/', about,name="about"),
+    path('contact/', contact,name="contact"), 
+    path('login/', login_page,name="login_page"), 
+    path('register/', register_page,name="register_page"), 
+    
+    
+    path('recipes/', recipes,name="recipes"), 
+    
     path('delete-recipe/<id>/', delete_recipe,name="delete-recipe"),
+    
     path('update-recipe/<id>/', update_recipe,name="update-recipe"),
     
 
