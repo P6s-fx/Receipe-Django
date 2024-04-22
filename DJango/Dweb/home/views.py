@@ -6,7 +6,6 @@ from django.http import HttpResponse
 
 def home(request):
     people = [
-
         {'name' : 'param','age': 21},
         {'name' : 'Sameer','age': 25},
         {'name' : 'Krishna','age': 22},
