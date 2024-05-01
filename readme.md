@@ -6,6 +6,7 @@ The Receipe Tray is a website for the delicious receipe collection. It allows Ad
 
 ## Table of Contents
 
+- [Project Structure](#Project_Structure)
 - [Features](#features)
 - [Installation](#installation)
 - [Usage](#usage)
@@ -14,6 +15,32 @@ The Receipe Tray is a website for the delicious receipe collection. It allows Ad
 - [Acknowledgments](#acknowledgments)
 - [Contact](#contact)
 
+
+## Project_Structure
+```bash
+Receipe-Django
+    ├───accounts
+    │   ├───migrations
+    │   │   └───__pycache__
+    │   └───__pycache__
+    ├───Dweb
+    │   └───__pycache__
+    ├───home
+    │   ├───migrations
+    │   │   └───__pycache__
+    │   ├───templates
+    │   │   └───home
+    │   └───__pycache__
+    ├───public
+    │   └───static
+    │       └───recipes
+    ├───recipes
+    └───veggie
+        ├───migrations
+        │   └───__pycache__
+        ├───templates
+        └───__pycache__
+```
 ## Features
 
 The Restaurant Billing System project provides the following key features:
