@@ -1,37 +1,28 @@
 {% extends "base.html" %}
 {% block start %}
-<!-- <h1>Yes, This is recipe page.</h1> -->
-<div class="container mt-5">
-
-    <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-
-        <h2>Login</h2>
-
-        {% if messages %}
-        <div class="alert alert-primary" role="alert">
-            {% for message in messages %}
-            {{ message }}
-            {% endfor %}
-        </div>
-
-        {% endif %}
-
-        <hr>
-        
-        <div class="mb-3">
-            <label for="exampleInputEmail1" class="form-label">User Name</label>
-            <input type="text" class="form-control" name="username" id="exampleInputEmail1" aria-describedby="emailHelp">
-        </div>
-
-        <div class="mb-3">
-            <label for="exampleInputPassword1" class="form-label">Password</label>
-            <input type="password" name="password" class="form-control" id="exampleInputPassword1">
-        </div>
-
-        <p>Don't have account? <a href="/register">Register</a></p>
-
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+<div class="mx-auto max-w-md">
+  <form class="mt-8 rounded-2xl bg-white dark:bg-zinc-800 shadow-sm ring-1 ring-zinc-200 dark:ring-zinc-700 p-6" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <h2 class="text-xl font-semibold">Sign in</h2>
+    {% if messages %}
+    <div class="mt-3 rounded-xl bg-emerald-100 text-emerald-800 dark:bg-emerald-900/30 dark:text-emerald-300 px-4 py-3 text-sm">
+      {% for message in messages %}
+      {{ message }}
+      {% endfor %}
+    </div>
+    {% endif %}
+    <div class="mt-5 grid gap-4">
+      <div>
+        <label class="text-sm font-medium">Username</label>
+        <input type="text" name="username" class="mt-1 w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+      </div>
+      <div>
+        <label class="text-sm font-medium">Password</label>
+        <input type="password" name="password" class="mt-1 w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+      </div>
+      <button type="submit" class="inline-flex items-center justify-center rounded-xl bg-emerald-500 hover:bg-emerald-600 px-5 py-3 text-white font-semibold">Sign in</button>
+      <p class="text-sm text-zinc-500">Don't have an account? <a href="/register" class="text-emerald-600 hover:underline">Register</a></p>
+    </div>
+  </form>
 </div>
 {% endblock %}

@@ -1,73 +1,57 @@
 {% extends "base.html" %}
 {% block start %}
-<!-- <h1>Yes, This is recipe page.</h1> -->
-<div class="container mt-5">
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+  <div class="lg:col-span-1">
+    <form class="rounded-2xl bg-white dark:bg-zinc-800 shadow-sm ring-1 ring-zinc-200 dark:ring-zinc-700 p-6" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <h2 class="text-xl font-semibold">Add Recipe</h2>
+      <p class="text-sm text-zinc-500 mt-1">Create a new recipe with a name, description, and image.</p>
+      <div class="mt-5 grid gap-4">
+        <div>
+          <label class="text-sm font-medium">Recipe Name</label>
+          <input name="recipe_name" required type="text" class="mt-1 w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+        </div>
+        <div>
+          <label class="text-sm font-medium">Recipe Description</label>
+          <textarea name="recipe_description" rows="4" required class="mt-1 w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
+        </div>
+        <div>
+          <label class="text-sm font-medium">Recipe Image</label>
+          <input name="recipe_image" type="file" class="mt-1 w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 py-2 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+        </div>
+        <button type="submit" class="inline-flex items-center justify-center rounded-xl bg-emerald-500 hover:bg-emerald-600 px-5 py-3 text-white font-semibold">Add Recipe</button>
+      </div>
+    </form>
 
-  <form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    <h2>Add Recipe</h2>
-    <hr>
-    
-    <div class="mb-3">
-      <label for="exampleInputEmail1" class="form-label" >Recipe Name</label>
-      <input name="recipe_name" required type="text" class="form-control" >
-    </div>
-    
-    <div class="mb-3">
-      <label for="exampleInputPassword1" name="recipe_description" class="form-label">Recipe Description</label>
-      <textarea name="recipe_description" required class="form-control" ></textarea>
-    </div>
-    
-    <div class="mb-3">
-      <label class="form-check-label" for="exampleCheck1">Recipe Image</label>
-      <input name="recipe_image" type="file" class="form-control" >
-    </div>
-    
-    <button type="submit" class="btn btn-success">Add recipe</button>
-  </form>
-<br>
-<br>
-<br>
+    <form action="" class="mt-8 rounded-2xl bg-white dark:bg-zinc-800 shadow-sm ring-1 ring-zinc-200 dark:ring-zinc-700 p-6">
+      <label class="text-sm font-medium">Search Recipe</label>
+      <div class="mt-2 flex gap-2">
+        <input name="search" type="text" placeholder="Try \"Pasta\"" class="flex-1 rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-900 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+        <button type="submit" class="inline-flex items-center justify-center rounded-xl bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-700 dark:hover:bg-zinc-600 px-5 py-3 font-semibold">Search</button>
+      </div>
+    </form>
+  </div>
 
-<hr>
-  <!-- {{recipes}} -->
-
-<form action="" class="">
-  
-  <div class="mt-5">
-    <div class="mx-auto col-6">
-      <label for="exampleInputEmail1" class="form-label" >Search Recipe</label>
-      <input name="search" required type="text" class="form-control" >
-      <button type="submit" class="btn btn-primary m-3 ">search</button>
+  <div class="lg:col-span-2">
+    <div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+      {% for recipe in recipes %}
+      <div class="rounded-2xl overflow-hidden bg-white dark:bg-zinc-800 shadow-sm ring-1 ring-zinc-200 dark:ring-zinc-700">
+        <div class="aspect-[4/3] bg-zinc-100 dark:bg-zinc-900">
+          <img src="/media/{{recipe.recipe_image}}" alt="{{recipe.recipe_name}}" class="h-full w-full object-cover" />
+        </div>
+        <div class="p-5">
+          <h3 class="font-semibold text-lg truncate">{{recipe.recipe_name}}</h3>
+          <p class="mt-2 text-sm text-zinc-600 dark:text-zinc-300 line-clamp-3">{{recipe.recipe_description}}</p>
+          <div class="mt-4 flex items-center justify-between">
+            <a href="/update-recipe/{{recipe.id}}/" class="inline-flex items-center rounded-lg bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-700 dark:hover:bg-zinc-600 px-3 py-1.5 text-sm font-medium">Update</a>
+            <a href="/delete-recipe/{{recipe.id}}/" class="inline-flex items-center rounded-lg bg-red-500 hover:bg-red-600 px-3 py-1.5 text-sm font-semibold text-white">Delete</a>
+          </div>
+        </div>
+      </div>
+      {% empty %}
+      <div class="col-span-full text-center text-zinc-500">No recipes found.</div>
+      {% endfor %}
     </div>
   </div>
-</form>
-
-  <table class="table mt-5">
-    <thead>
-      <tr>
-        <th scope="col">#</th>
-        <th scope="col">Recipe Name </th>
-        <th scope="col">Description</th>
-        <th scope="col">Image</th>
-        <th scope="col">Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      {% for recipe in recipes %}
-      <tr>
-        <th scope="row">{{forloop.counter}}</th>
-        <td>{{recipe.recipe_name}}</td>
-        <td>{{recipe.recipe_description}}</td>
-        <td>
-          <img src="/media/{{recipe.recipe_image}}" style="height : 100px;"></td>
-          <td>
-            <a href="/delete-recipe/{{recipe.id}}/" class="btn btn-danger mb-3"> Delete </a>
-            <a href="/update-recipe/{{recipe.id}}/" class="btn btn-success"> update </a>
-          </td>
-      {% endfor %}
-    </tbody>
-  </table>
-
-</div>
-{% endblock %} 
+</section>
+{% endblock %}

@@ -1,13 +1,14 @@
-# Receipe Tray
+# Recipe Tray
 
 ## Description
 
-The Receipe Tray is a website for the delicious receipe collection. It allows Admin to Add, Delete or Modify recipes and users can view all available recipes. Back-end is developed Using Python-Django framework.
+Recipe Tray is a simple, modern recipe manager built with Django. Admins can add, update, and delete recipes; authenticated users can browse and search. The UI is responsive and inspired by iOS, implemented with Tailwind CSS via CDN.
 
 ## Table of Contents
 
-- [Project Structure](#Project_Structure)
+- [Project Structure](#project_structure)
 - [Features](#features)
+- [Requirements](#requirements)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
@@ -16,99 +17,98 @@ The Receipe Tray is a website for the delicious receipe collection. It allows Ad
 - [Contact](#contact)
 
 
-## Project_Structure
+## Project_structure
 ```bash
-Receipe-Django
-    ├───accounts
-    │   ├───migrations
-    │   │   └───__pycache__
-    │   └───__pycache__
-    ├───Dweb
-    │   └───__pycache__
-    ├───home
-    │   ├───migrations
-    │   │   └───__pycache__
-    │   ├───templates
-    │   │   └───home
-    │   └───__pycache__
-    ├───public
-    │   └───static
-    │       └───recipes
-    ├───recipes
-    └───veggie
-        ├───migrations
-        │   └───__pycache__
-        ├───templates
-        └───__pycache__
+Receipe-Django/
+  ├─ Receipe-Django/
+  │  ├─ Dweb/                 # Django project (settings, urls, wsgi)
+  │  ├─ accounts/             # (present, currently unused)
+  │  ├─ home/                 # Public pages (home/about/contact)
+  │  ├─ veggie/               # Recipes app (models, views, auth)
+  │  ├─ public/static/        # Static assets (images)
+  │  ├─ db.sqlite3            # SQLite database (dev)
+  │  └─ manage.py
+  └─ readme.md
 ```
+
 ## Features
 
-The Restaurant Billing System project provides the following key features:
+- Modern, responsive UI (Tailwind) with light/dark support
+- Recipes CRUD (create, list, search, update, delete)
+- Image upload for each recipe
+- Authentication (register, login, logout)
+- Admin panel for advanced management
 
-- User-friendly interface
-- Storing Receipes in Database
-- User can Add, modify and delete the receipe data
+## Requirements
+
+From `requirements.txt`:
+
+```text
+asgiref==3.9.1
+Django==5.2.6
+pillow==11.3.0
+setuptools==80.9.0
+sqlparse==0.5.3
+wheel==0.45.1
+```
+
+Compatibility:
+- Python 3.13+
+- Django 5.1+ (project currently uses 5.2.6)
 
 ## Installation
 
-To use the Restaurant Billing System, follow these installation steps:
-
-1. Clone the repository
-
+1) Clone and enter the project directory
 ```bash
 git clone https://github.com/<username>/<forked-repo>.git
+cd Receipe-Django/Receipe-Django
 ```
 
-2. Create your own virtual environment
-
-Every time you start your machine, you must activate the virtual environment using source venv/bin/activate.
-
+2) Create and activate a virtual environment
 ```bash
-python3 -m venv venv
-source venv/bin/activate
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip setuptools wheel
 ```
 
-3. Install your requirements
-
+3) Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
 
-5. Make your migrations
-
+4) Apply database migrations
 ```bash
-python manage.py makemigrations
 python manage.py migrate
 ```
 
-6. Create a new superuser
-
+5) (Optional) Create an admin user
 ```bash
 python manage.py createsuperuser
 ```
 
-7. Final checks
-Start the development server and ensure everything is running without errors.
-
+6) Run the development server
 ```bash
 python manage.py runserver
 ```
 
+Visit:
+- Home: http://127.0.0.1:8000/
+- Recipes: http://127.0.0.1:8000/recipes/
+- Admin: http://127.0.0.1:8000/admin/
+
 ## Usage
 
-- Launch the application using the installation steps mentioned above.
-- Use the user-friendly interface to manage Receipe Information.
-- Receipe data is stored in SQLite database
+- Use Register/Login to access the recipes page.
+- Add a recipe with a name, description, and image.
+- Search by keyword on the recipes page.
+- Update or delete existing recipes.
 
 ## Contributing
 
-If you want to contribute to this project, please follow these guidelines:
-
-- Fork the repository.
-- Create a new branch for your feature or bug fix.
-- Make your changes and submit a pull request.
-- Follow coding standards and conventions.
-- Please report any issues or suggest improvements by creating an issue.
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes and open a PR
+4. Follow coding standards and include concise descriptions
 
 ## License
 
@@ -116,18 +116,11 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 ## Acknowledgments
 
-We would like to acknowledge the following libraries and modules that made this project possible:
-
-- HTML
-- CSS
-- Bootstrap
-- Python
-- Django Framework  
-- SQLite database
+- Python, Django
+- Tailwind CSS (via CDN in templates)
+- SQLite (development database)
 
 ## Contact
-
-If you have questions or want to get in touch with the project maintainer, feel free to contact:
 
 - Param Suthar
 - Email: <param.corpid@email.com>

@@ -1,4 +1,37 @@
 {% extends "base.html" %}
 {% block start %}
-    <h1>Yes, This is home page.</h1>
+<section class="relative overflow-hidden">
+  <div class="mx-auto max-w-5xl text-center py-12 sm:py-16">
+    <h1 class="text-4xl sm:text-5xl font-bold tracking-tight">
+      Cook smarter with a modern, elegant recipe book
+    </h1>
+    <p class="mt-4 text-lg text-zinc-600 dark:text-zinc-300">
+      Discover, create, and manage your favorite recipes with a clean, iOS-inspired interface.
+    </p>
+    <div class="mt-8 flex items-center justify-center gap-4">
+      <a href="/recipes/" class="inline-flex items-center rounded-xl bg-emerald-500 hover:bg-emerald-600 px-5 py-3 text-white font-semibold shadow-sm">
+        Explore Recipes
+      </a>
+      <a href="/about" class="inline-flex items-center rounded-xl bg-zinc-200 hover:bg-zinc-300 dark:bg-zinc-800 dark:hover:bg-zinc-700 px-5 py-3 font-medium">
+        Learn more
+      </a>
+    </div>
+  </div>
+
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">
+    {% for person in people %}
+    <div class="rounded-2xl bg-white dark:bg-zinc-800 shadow-sm ring-1 ring-zinc-200 dark:ring-zinc-700 p-6">
+      <div class="flex items-center gap-4">
+        <div class="h-12 w-12 rounded-xl bg-emerald-100 dark:bg-emerald-900/40 flex items-center justify-center text-emerald-700 dark:text-emerald-300 font-semibold">
+          {{ person.name|first|upper }}
+        </div>
+        <div>
+          <p class="font-semibold">{{ person.name }}</p>
+          <p class="text-sm text-zinc-500">Age {{ person.age }}</p>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
 {% endblock %}

@@ -1,4 +1,13 @@
 {% extends "base.html" %}
 {% block start %}
-    <h1>Yes, This is contact page.</h1>
+<section class="mx-auto max-w-3xl">
+  <h1 class="text-3xl font-bold">Contact</h1>
+  <p class="mt-4 text-zinc-600 dark:text-zinc-300">Have feedback or ideas? We’d love to hear from you.</p>
+  <form class="mt-8 grid gap-4">
+    <input type="text" placeholder="Your name" class="w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+    <input type="email" placeholder="Email address" class="w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500" />
+    <textarea rows="5" placeholder="Message" class="w-full rounded-xl border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-emerald-500"></textarea>
+    <button type="button" class="inline-flex items-center justify-center rounded-xl bg-emerald-500 hover:bg-emerald-600 px-5 py-3 text-white font-semibold">Send</button>
+  </form>
+</section>
 {% endblock %}
