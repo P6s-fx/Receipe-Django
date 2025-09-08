@@ -60,7 +60,7 @@ Compatibility:
 
 1) Clone and enter the project directory
 ```bash
-git clone https://github.com/<username>/<forked-repo>.git
+git clone https://github.com/P6s-fx/Receipe-Django.git
 cd Receipe-Django/Receipe-Django
 ```
 
